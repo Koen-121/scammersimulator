@@ -269,3 +269,119 @@ button:hover {
   color: #ffffff;
   font-size: 1em;
 }
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+  }
+
+  .header {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    padding: 1rem;
+  }
+
+  .header .stats p {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .container {
+    padding: 1rem;
+    align-items: stretch;
+  }
+
+  .buttons {
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  #scamButton {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    font-size: 1.5em;
+    padding: 15px 30px;
+    margin-bottom: 1rem;
+  }
+
+  .upgrades {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .upgrades h2 {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .upgrades h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .upgrades button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .side-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .target-box,
+  .prestige-box {
+    width: 100%;
+    font-size: 1em;
+  }
+
+  .stats-panel {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .stats-panel h2 {
+    font-size: 1.2em;
+  }
+
+  .stats-panel p {
+    font-size: 0.9em;
+  }
+
+  .bottom-right-buttons {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .reset-button,
+  .popup-toggle {
+    font-size: 0.9em;
+    padding: 8px 12px;
+  }
+}
