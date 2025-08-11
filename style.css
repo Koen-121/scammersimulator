@@ -1,0 +1,271 @@
+body {
+  background: linear-gradient(to right, #2c3e50, #34495e);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ecf0f1;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 3.75em; /* 1.25x original */
+  color: #f1c40f;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats p {
+  font-size: 2.5em; /* 1.25x original */
+  margin: 15px 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 40px;
+}
+
+#scamButton {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5em;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #166135;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2ecc71;
+}
+
+.gain-popup {
+  position: absolute;
+  font-size: 24px;
+  color: limegreen;
+  opacity: 0;
+  pointer-events: none;
+  animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+.gain-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-20px);
+}
+
+.bottom-right-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.reset-button,
+.popup-toggle {
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.popup-toggle {
+  background-color: #4d94ff;
+}
+
+.reset-button:hover {
+  background-color: #e60000;
+}
+
+.popup-toggle:hover {
+  background-color: #0066cc;
+}
+
+.side-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* spacing between boxes */
+}
+
+.target-box,
+.prestige-box {
+  position: relative;
+  width: 450px;
+  font-size: 1.3em;
+}
+
+.target-box {
+  background-color: #363636;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prestige-box {
+  background-color: #4a2b4b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #ecf0f1;
+}
+
+.target-box h3 {
+  margin-top: 0;
+  color: #f39c12;
+  font-size: 1.75em;
+}
+
+#progressContainer {
+  width: 100%;
+  height: 25px;
+  background-color: #7f8c8d;
+  border-radius: 12px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background-color: #2ecc71;
+  transition: width 0.3s ease;
+}
+
+.prestige-box h3 {
+  margin-top: 0;
+  color: #f39c12;
+  font-size: 1.75em;
+}
+
+#prestigeButton {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  font-style: italic;
+  border: none;
+  border-radius: 6px;
+  background-color: #e67e22;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upgrades {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.upgrades h2 {
+  font-size: 2.5em;
+  color: #f1c40f;
+  margin-bottom: 0px;
+}
+.upgrades h3 {
+  font-size: 1.5em;
+  text-decoration: underline;
+  color: #86ff86;
+  margin-bottom: 50px;
+}
+
+.upgrades button {
+  font-size: 2em;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2980b9;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upgrades button:hover {
+  background-color: #3498db;
+}
+
+.header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1000;
+}
+
+.header h1 {
+  font-size: 3.75em;
+  color: #f1c40f;
+  margin-bottom: 10px;
+}
+
+.reset-button:hover {
+  background-color: #e60000;
+}
+
+.header .stats p {
+  font-size: 2em;
+  margin: 5px 0;
+  color: #ecf0f1;
+}
+
+.stats-panel {
+  position: fixed;
+  bottom: 20px; /* Distance from bottom of screen */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4b5e77; /* Optional: background for visibility */
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000; /* Make sure it stays above other elements */
+}
+
+.stats-panel h2 {
+  margin: 0;
+  font-style: italic;
+  color: #ffe600;
+  font-size: 1.5em;
+}
+
+.stats-panel p {
+  margin: 10;
+  color: #ffffff;
+  font-size: 1em;
+}
