@@ -2,62 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
   <title>Scammer Simulator</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="header">   
+  <header class="header container">
     <h1>💸 Scammer Simulator</h1>
     <div class="stats">
       <p id="money">You have nothing lol</p>
-      <!-- Template for gain popups -->
       <div id="gainTemplate" class="gain-popup" style="display: none;"></div>
     </div>
-  </div>
+  </header>
 
-  <div class="buttons">
-    <button id="scamButton" onclick="scamClick()">💵 Click to Scam 💵</button>
-  </div>
+  <main class="main-content container">
+    <section class="buttons">
+      <button id="scamButton" onclick="scamClick()">💵 Click to Scam 💵</button>
+    </section>
 
-  <div class="upgrades">
-    <h2>Upgrades</h2>
-    <h3>Upgrade your scamming empire to scam more efficiently!</h3>
-    <button id="upg1" onclick="buyUpgrade()">📚 Scamming School ($50)</button>
-    <p>Take MORE money from unsuspecting victims.</p>
-    <button id="upg2" onclick="buyUpgrade2()">🧑‍🎓 Hire Apprentice ($250)</button>
-    <p>Hire an apprentice to help you scam passively.</p>
-    <button id="upg3" onclick="buyUpgrade3()">🏢 Scamming Offices ($1250)</button>
-    <p>Expand your operation with shady office space. More scams/s and scam value.</p>
-    <button id="upg4" onclick="buyUpgrade4()">🏦 Scamming Corporation ($5000)</button>
-    <p>Form a corporation to scam on a massive scale. Scam value SKYROCKETS.</p>
-    <button id="upg5" onclick="buyUpgrade5()">💰 Multitasking Employees ($2500)</button>
-    <p>All passive upgrades can now multitask and scam multiple people at once!</p>
-  </div>
+    <section class="upgrades">
+      <h2>Upgrades</h2>
+      <h3>Upgrade your scamming empire to scam more efficiently!</h3>
+      <button id="upg1" onclick="buyUpgrade()">📚 Scamming School ($50)</button>
+      <p>Take MORE money from unsuspecting victims.</p>
+      <button id="upg2" onclick="buyUpgrade2()">🧑‍🎓 Hire Apprentice ($250)</button>
+      <p>Hire an apprentice to help you scam passively.</p>
+      <button id="upg3" onclick="buyUpgrade3()">🏢 Scamming Offices ($1250)</button>
+      <p>Expand your operation with shady office space. More scams/s and scam value.</p>
+      <button id="upg4" onclick="buyUpgrade4()">🏦 Scamming Corporation ($5000)</button>
+      <p>Form a corporation to scam on a massive scale. Scam value SKYROCKETS.</p>
+      <button id="upg5" onclick="buyUpgrade5()">💰 Multitasking Employees ($2500)</button>
+      <p>All passive upgrades can now multitask and scam multiple people at once!</p>
+    </section>
 
-  <div class="stats-panel">
-    <h2>Statistics</h2>
-    <p id="scamsPerSecondStat">Scams per second: 0</p>
-    <p id="scamsPerScamStat">Scams per scam: 1</p>
-    <p id="prestigeAmountStat">Prestiges: 0</p>
-  </div>
+    <section class="stats-panel">
+      <h2>Statistics</h2>
+      <p id="scamsPerSecondStat">Scams per second: 0</p>
+      <p id="scamsPerScamStat">Scams per scam: 1</p>
+      <p id="prestigeAmountStat">Prestiges: 0</p>
+    </section>
 
-<div class="bottom-right-buttons">
+    <section class="side-panel">
+      <div id="targetDisplay"></div>
+      <div id="prestigeDisplay">
+        <div class="prestige-box">
+          <h3>👑 Prestige</h3>
+          <p>Reset your scamming empire to gain permanent bonuses!</p>
+          <button id="prestigeButton">Prestige</button>
+          <div id="prestigeStats"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottom-right-buttons container">
     <button onclick="resetGame()" class="reset-button">🔄 Reset Game</button>
     <button id="togglePopups" class="popup-toggle">💬 Disable Popups</button>
-</div>
-
-  <div class="side-panel">
-    <div id="targetDisplay"></div>
-    <div id="prestigeDisplay">
-      <div class="prestige-box">
-        <h3>👑 Prestige</h3>
-        <p>Reset your scamming empire to gain permanent bonuses!</p>
-        <button id="prestigeButton">Prestige</button>
-        <div id="prestigeStats"></div>
-      </div>
-    </div>
-  </div>
+  </footer>
 
   <script src="saves.js"></script>
   <script src="script.js"></script>
