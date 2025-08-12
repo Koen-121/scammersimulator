@@ -129,8 +129,8 @@ function scamClick() {
   gameState.minMoney = currentTarget.moneyPool[0] + bonusminmoney;
   gameState.maxMoney = currentTarget.moneyPool[1] + bonusmaxmoney;
   const baseGain = getRandomInt(gameState.minMoney, gameState.maxMoney);
-  gameState.moneyGained = baseGain * gameState.prestigeMultiplier;
-  gameState.money += baseGain * gameState.prestigeMultiplier;
+  gameState.moneyGained = baseGain * gameState.prestigeMultiplier * gameState.scamsPerScam;
+  gameState.money += baseGain * gameState.prestigeMultiplier * gameState.scamsPerScam;
   gameState.rawScams += gameState.scamsPerScam;
 
   updateProgressBar();
