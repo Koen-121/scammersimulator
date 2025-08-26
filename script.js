@@ -48,6 +48,12 @@ const scamTargets = [
     moneyPool: [10000, 100000],
     description: "He thought it was a SpaceX recommendation. Now you're the one with a billion-dollar Rocket Ship.",
     scamsRequired: 100000
+  },
+  {
+    name: "Boss Baby",
+    moneyPool: [5000000, 50000000],
+    description: "He thought it was a diaper delivery confirmation. Now you're the one running Baby Corp.",
+    scamsRequired: 5000000000000
   }
 ];
 
