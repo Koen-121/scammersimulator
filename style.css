@@ -9,6 +9,10 @@ body {
   overflow-x: hidden;
 }
 
+html, body {
+  touch-action: manipulation;
+}
+
 h1 {
   font-size: 3.75em;
   color: #f1c40f;
