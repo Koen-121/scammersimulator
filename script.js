@@ -4,7 +4,7 @@ const scamTargets = [
   {
     name: "Grandma",
     moneyPool: [1, 5],
-    description: "She just wanted to forward a chain email. Now she's funding your empire.",
+    description: "She just wanted to forward an email. Now she's funding your empire.",
     scamsRequired: 0
   },
   {
@@ -104,6 +104,7 @@ function prestige() {
     gameState.scamsPerScam = 1
     gameState.clickspersec = 0;
     gameState.scamsPerSecond = 0;
+    gameState.effectiveScams = 0;
     gameState.currentTargetIndex = 0;
     gameState.minMoney = 1;
     gameState.maxMoney = 5;
@@ -155,7 +156,6 @@ function scamClick() {
 
   document.querySelector("#money").innerHTML = `you have scammed ${gameState.rawScams} people and have $${formatMoney(gameState.money)}`;
 
-  // Random position within the viewport
 if (popupsEnabled) {
   const gainTemplate = document.querySelector("#gainTemplate");
   const gainClone = gainTemplate.cloneNode(true);
@@ -182,7 +182,7 @@ function buyUpgrade() {
     gameState.money -= gameState.upgradeCost;
     gameState.upgMinMoney += 1;
     gameState.upgMaxMoney += 2;
-    gameState.upgradeCost = Math.floor(gameState.upgradeCost * 1.45);
+    gameState.upgradeCost = Math.floor(gameState.upgradeCost * 1.75);
 
     document.querySelector("#upg1").innerHTML = `📚 Scamming School ($${formatMoney(gameState.upgradeCost)})`;
     document.querySelector("#money").innerHTML = `you have scammed ${gameState.rawScams} people and have $${gameState.money}`;
@@ -196,7 +196,7 @@ function buyUpgrade2() {
   if (gameState.money >= gameState.upgrade2Cost) {
     gameState.money -= gameState.upgrade2Cost;
     gameState.scamsPerSecond++;
-    gameState.upgrade2Cost = Math.floor(gameState.upgrade2Cost * 1.45);
+    gameState.upgrade2Cost = Math.floor(gameState.upgrade2Cost * 1.35);
 
     updateAutoScamLoop();
     document.querySelector("#upg2").innerHTML = `🧑‍🎓 Hire Apprentice ($${formatMoney(gameState.upgrade2Cost)})`;
@@ -210,10 +210,10 @@ function buyUpgrade2() {
 function buyUpgrade3() {
   if (gameState.money >= gameState.upgrade3Cost) {
     gameState.money -= gameState.upgrade3Cost;
-    gameState.upgMinMoney = Math.floor(gameState.upgMinMoney * 1.5);
-    gameState.upgMaxMoney = Math.floor(gameState.upgMaxMoney * 1.5);
+    gameState.upgMinMoney = Math.floor(gameState.upgMinMoney * 1.3);
+    gameState.upgMaxMoney = Math.floor(gameState.upgMaxMoney * 1.3);
     gameState.scamsPerSecond += 5;
-    gameState.upgrade3Cost = Math.floor(gameState.upgrade3Cost * 2.5);
+    gameState.upgrade3Cost = Math.floor(gameState.upgrade3Cost * 3.75);
 
     updateAutoScamLoop();
     document.querySelector("#upg3").innerHTML = `🏢 Scamming Offices ($${formatMoney(gameState.upgrade3Cost)})`;
@@ -227,10 +227,10 @@ function buyUpgrade3() {
 function buyUpgrade4() {
   if (gameState.money >= gameState.upgrade4Cost) {
     gameState.money -= gameState.upgrade4Cost;
-    gameState.upgMinMoney = Math.floor(gameState.upgMinMoney * 2);
-    gameState.upgMaxMoney = Math.floor(gameState.upgMaxMoney * 2);
+    gameState.upgMinMoney = Math.floor(gameState.upgMinMoney * 1.75);
+    gameState.upgMaxMoney = Math.floor(gameState.upgMaxMoney * 1.75);
     gameState.scamsPerSecond += 5;
-    gameState.upgrade4Cost = Math.floor(gameState.upgrade4Cost * 2.95);
+    gameState.upgrade4Cost = Math.floor(gameState.upgrade4Cost * 4.25);
 
     updateAutoScamLoop();
     document.querySelector("#upg4").innerHTML = `🏦 Scamming Corporation ($${formatMoney(gameState.upgrade4Cost)})`;
@@ -246,7 +246,7 @@ function buyUpgrade5() {
     gameState.money -= gameState.upgrade5Cost;
 
     gameState.scamsPerScam++;
-    gameState.upgrade5Cost = Math.floor(gameState.upgrade5Cost * 3.15);
+    gameState.upgrade5Cost = Math.floor(gameState.upgrade5Cost * 4.35);
 
     updateAutoScamLoop();
     document.querySelector("#upg5").innerHTML = `💰 Multitasking Employees ($${formatMoney(gameState.upgrade5Cost)})`;
@@ -305,6 +305,7 @@ function updateStatsDisplay() {
     document.getElementById("scamsPerSecondStat").textContent = `Scams per second: ${gameState.scamsPerSecond}`;
     document.getElementById("scamsPerScamStat").textContent = `Scams per scam: ${gameState.scamsPerScam}`;
     document.getElementById("prestigeAmountStat").textContent = `Prestiges: ${gameState.prestiges}`;
+    document.getElementById("effectiveScams").textContent = `Effective scams/second: ${(gameState.scamsPerSecond * gameState.scamsPerScam).toFixed(2)}`;
 }
 
 function updateUpgText() {
@@ -315,19 +316,28 @@ function updateUpgText() {
     document.querySelector("#upg5").innerHTML = `💰 Multitasking Employees ($${formatMoney(gameState.upgrade5Cost)})`;
 }
 
+const suffixes = [
+  "", "k", "M", "B", "T",
+  "Qd", "Qi", "Sx", "Sp", "Oct",
+  "Non", "Dec", "UnDec", "DuoDec",
+  "TreDec", "QDec", "QuDec",
+  "SxDec", "SpDec", "OcDec",
+  "NoDec", "Vig", "UnVig", "DuoVig",
+  "TreVig", "QdVig", "QiVig", 
+  "SxVig", "SpVig", "OcVig", 
+  "NoVig", "Trig", "UnTrig", "DuoTrig",
+  "TreTrig", "QdTrig", "QiTrig",
+  "SxTrig", "SpTrig", "OcTrig",
+  "NoTrig"
+];
+
 function formatMoney(value) {
-  if (value >= 1_000_000_000_000_000_000_000_000_000_000_000) return (value / 1_000_000_000_000_000_000_000_000_000_000_000).toFixed(2) + "Dec";
-  if (value >= 1_000_000_000_000_000_000_000_000_000_000) return (value / 1_000_000_000_000_000_000_000_000_000_000).toFixed(2) + "Non";
-  if (value >= 1_000_000_000_000_000_000_000_000_000) return (value / 1_000_000_000_000_000_000_000_000_000).toFixed(2) + "Oct";
-  if (value >= 1_000_000_000_000_000_000_000_000) return (value / 1_000_000_000_000_000_000_000_000).toFixed(2) + "Sp";
-  if (value >= 1_000_000_000_000_000_000_000) return (value / 1_000_000_000_000_000_000_000).toFixed(2) + "Sx";
-  if (value >= 1_000_000_000_000_000_000) return (value / 1_000_000_000_000_000_000).toFixed(2) + "Qi";
-  if (value >= 1_000_000_000_000_000) return (value / 1_000_000_000_000_000).toFixed(2) + "Qd";
-  if (value >= 1_000_000_000_000) return (value / 1_000_000_000_000).toFixed(2) + "T";
-  if (value >= 1_000_000_000) return (value / 1_000_000_000).toFixed(2) + "B";
-  if (value >= 1_000_000) return (value / 1_000_000).toFixed(2) + "M";
-  if (value >= 1_000) return (value / 1_000).toFixed(1) + "k";
-  return value.toString();
+  if (value < 1000) return value.toString();
+
+  const tier = Math.floor(Math.log10(value) / 3);
+  const divisor = 10 ** (tier * 3);
+
+  return (value / divisor).toFixed(tier === 1 ? 1 : 2) + suffixes[tier];
 }
 
 function updateUI() {
