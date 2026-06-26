@@ -17,7 +17,7 @@ let gameState = {
   upgMinMoney: 0,
   upgMaxMoney: 0,
   scamsUntilPrestige: 2500,
-  prestigeMultiplier: 9999999,
+  prestigeMultiplier: 1,
   prestiges: 0,
   scamsPerScam: 1,
 };
