@@ -3,11 +3,11 @@ let gameState = {
   moneyGained: 0,
   upgradeLevel: 0,
   rawScams: 0,
-  upgradeCost: 50,
-  upgrade2Cost: 250,
-  upgrade3Cost: 1250,
-  upgrade4Cost: 5000,
-  upgrade5Cost: 25000,
+  upgradeCost: 75,
+  upgrade2Cost: 300,
+  upgrade3Cost: 2500,
+  upgrade4Cost: 10000,
+  upgrade5Cost: 50000,
   clickspersec: 0,
   scamsPerSecond: 0,
   currentTargetIndex: 0,
@@ -17,7 +17,7 @@ let gameState = {
   upgMinMoney: 0,
   upgMaxMoney: 0,
   scamsUntilPrestige: 2500,
-  prestigeMultiplier: 1,
+  prestigeMultiplier: 9999999,
   prestiges: 0,
   scamsPerScam: 1,
 };
@@ -54,11 +54,11 @@ function resetGame() {
   }
 }
 
-// Example: when button is clicked
+// when button is clicked
   gameState.money += gameState.moneyGained;
   gameState.rawScams += 1;
   saveGame();
   updateUI();
 
-// Optional: auto-save every 10 seconds
+// auto-save every 10 seconds
 setInterval(saveGame, 10000);
