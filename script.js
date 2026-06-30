@@ -182,7 +182,7 @@ function buyUpgrade() {
     gameState.money -= gameState.upgradeCost;
     gameState.upgMinMoney += 1;
     gameState.upgMaxMoney += 2;
-    gameState.upgradeCost = Math.floor(gameState.upgradeCost * 1.75);
+    gameState.upgradeCost = Math.floor(gameState.upgradeCost * 1.6);
 
     document.querySelector("#upg1").innerHTML = `📚 Scamming School ($${formatMoney(gameState.upgradeCost)})`;
     document.querySelector("#money").innerHTML = `you have scammed ${gameState.rawScams} people and have $${gameState.money}`;
@@ -196,7 +196,7 @@ function buyUpgrade2() {
   if (gameState.money >= gameState.upgrade2Cost) {
     gameState.money -= gameState.upgrade2Cost;
     gameState.scamsPerSecond++;
-    gameState.upgrade2Cost = Math.floor(gameState.upgrade2Cost * 1.35);
+    gameState.upgrade2Cost = Math.floor(gameState.upgrade2Cost * 1.3);
 
     updateAutoScamLoop();
     document.querySelector("#upg2").innerHTML = `🧑‍🎓 Hire Apprentice ($${formatMoney(gameState.upgrade2Cost)})`;
@@ -213,7 +213,7 @@ function buyUpgrade3() {
     gameState.upgMinMoney = Math.floor(gameState.upgMinMoney * 1.3);
     gameState.upgMaxMoney = Math.floor(gameState.upgMaxMoney * 1.3);
     gameState.scamsPerSecond += 5;
-    gameState.upgrade3Cost = Math.floor(gameState.upgrade3Cost * 3.75);
+    gameState.upgrade3Cost = Math.floor(gameState.upgrade3Cost * 3.2);
 
     updateAutoScamLoop();
     document.querySelector("#upg3").innerHTML = `🏢 Scamming Offices ($${formatMoney(gameState.upgrade3Cost)})`;
@@ -230,7 +230,7 @@ function buyUpgrade4() {
     gameState.upgMinMoney = Math.floor(gameState.upgMinMoney * 1.75);
     gameState.upgMaxMoney = Math.floor(gameState.upgMaxMoney * 1.75);
     gameState.scamsPerSecond += 5;
-    gameState.upgrade4Cost = Math.floor(gameState.upgrade4Cost * 4.25);
+    gameState.upgrade4Cost = Math.floor(gameState.upgrade4Cost * 3.9);
 
     updateAutoScamLoop();
     document.querySelector("#upg4").innerHTML = `🏦 Scamming Corporation ($${formatMoney(gameState.upgrade4Cost)})`;
@@ -246,7 +246,7 @@ function buyUpgrade5() {
     gameState.money -= gameState.upgrade5Cost;
 
     gameState.scamsPerScam++;
-    gameState.upgrade5Cost = Math.floor(gameState.upgrade5Cost * 4.35);
+    gameState.upgrade5Cost = Math.floor(gameState.upgrade5Cost * 4.05);
 
     updateAutoScamLoop();
     document.querySelector("#upg5").innerHTML = `💰 Multitasking Employees ($${formatMoney(gameState.upgrade5Cost)})`;
